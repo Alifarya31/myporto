@@ -30,13 +30,13 @@
     }
   },
   {
-    "title": "Company Profile",
-    "tech": "HTML, CSS, JS & BOOTSTRAP",
-    "image": "./assets/img/project/portfolio.png",
+    "title": "Vkellogg's UI UX",
+    "tech": "UI UX Design",
+    "image": "./assets/img/project/figma1.png",
     "desc": "This is my project for company profile(Thalia Education)",
     "links": {
-      "demo": "https://alifaryaramadhan.com",
-      "code": "https://github.com/Alifarya31/"
+      "demo": "https://www.figma.com/proto/wKs8tf60NFaBFmNqkKF6Lo/Vkellogg's-%3AD?node-id=1-1646",
+      "code": "https://www.figma.com/design/wKs8tf60NFaBFmNqkKF6Lo/Vkellogg's-%3AD?node-id=1-1646&node-type=frame&t=4uBXoeNBiN7XxjDu-0"
     }
   },
   {
@@ -46,7 +46,7 @@
     "desc": "This is my project for personal portfolio.",
     "links": {
       "demo": "https://alifaryaramadhan.com",
-      "code": "https://github.com/Alifarya31/"
+      "code": "https://github.com/Alifarya31/Portofolio-"
     }
   }
 ]
