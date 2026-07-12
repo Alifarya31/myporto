@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="keywords"
-      content="Alifarya, Alif Arya, Ramadhan, portfolio, personal portfolio, portfolio design, portfolio website"
+      content="Alif Arya Ramadhan, Alifarya, portfolio, front-end developer, UI UX designer, content creator, web developer Indonesia"
     />
     <meta
       name="description"
-      content="Welcome to Alif's Portfolio. Front-End Web Developer, UI/UX Designer and Content Creator"
+      content="Alif Arya Ramadhan — Front-End Web Developer, UI/UX Designer & Content Creator based in Bekasi, Indonesia. Explore my projects, certifications and skills."
     />
+    <meta name="author" content="Alif Arya Ramadhan" />
+    <meta property="og:title" content="Alif Arya Ramadhan — Portfolio" />
+    <meta
+      property="og:description"
+      content="Front-End Web Developer, UI/UX Designer & Content Creator."
+    />
+    <meta property="og:type" content="website" />
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -26,15 +34,17 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link id="favicon" rel="shortcut icon" href="./assets/img/sdcicon.svg" />
-    <title>Alif Arya Ramadhan</title>
+    <link id="favicon" rel="shortcut icon" href="./assets/img/aaricon.svg" />
+    <title>Alif Arya Ramadhan — Front-End Developer & UI/UX Designer</title>
   </head>
   <body class="click-trigger">
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <nav
       class="navbar d-flex w-100 position-fixed navbar-expand-lg navbar-light bg-transparent"
     >
       <div class="container">
-        <a class="navbar-brand" href="">
+        <a class="navbar-brand" href="#home">
           <svg
             id="icon-bg"
             width="40"
@@ -45,8 +55,8 @@
             <path
               id="icon-st"
               d="M5 50L50 5L95 50L50 95L5 50Z"
-              stroke="#2D31FA"
-              stroke-width="7"
+              stroke="#6366f1"
+              stroke-width="6"
               fill="white"
             />
             <text
@@ -54,18 +64,19 @@
               y="58%"
               dominant-baseline="middle"
               text-anchor="middle"
-              font-family="Arial"
+              font-family="League Spartan, Arial"
               font-size="50"
               font-weight="bold"
-              fill="#2D31FA"
+              fill="#6366f1"
             >
               A
             </text>
           </svg>
+          <span>Alif<span style="color: var(--primary-2)">.</span></span>
         </a>
 
         <button
-          class="navbar-toggler position-relative collapsed"
+          class="navbar-toggler position-relative collapsed d-lg-none"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -77,436 +88,385 @@
           <span class="toggler-icon d-block middle-bar"></span>
           <span class="toggler-icon d-block bottom-bar"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="#home">Home</a>
+            <li class="nav-item">
+              <a class="nav-link active" href="#home">Home</a>
             </li>
-            <li class="nav-item mx-2">
+            <li class="nav-item">
               <a class="nav-link" href="#about">About</a>
             </li>
-            <li class="nav-item mx-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#certification">Certification</a>
             </li>
-            <li class="nav-item mx-2">
+            <li class="nav-item">
               <a class="nav-link" href="#project">Projects</a>
             </li>
-            <li class="nav-item mx-2">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 target="_blank"
+                rel="noopener noreferrer"
                 href="https://blog.alifaryaramadhan.my.id"
                 >Blog</a
               >
             </li>
           </ul>
-          <form>
-            <a
-              class="btn"
-              href="mailto:alif.ramadhan003@binus.ac.id"
-              rel="noopener noreferrer"
-              target="_blank"
+          <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+            <button
+              class="theme-toggle"
+              id="themeToggle"
               type="button"
-              >Contact me</a
+              aria-label="Toggle color theme"
             >
-          </form>
+              <i class="fas fa-moon icon-moon"></i>
+              <i class="fas fa-sun icon-sun"></i>
+            </button>
+            <a
+              class="nav-cta"
+              href="mailto:alifaryaramadhan@binus.ac.id"
+              rel="noopener noreferrer"
+            >
+              <i class="fas fa-paper-plane"></i> Hire Me
+            </a>
+          </div>
         </div>
       </div>
     </nav>
 
-    <section
-      class="home d-flex position-relative align-items-center justify-content-center"
-      id="home"
-    >
+    <!-- ================= HOME / HERO ================= -->
+    <section class="home" id="home">
       <div id="particles-js" class="position-absolute"></div>
       <div class="content d-flex flex-wrap flex-row">
         <div class="intro">
+          <span class="greeting">
+            <span class="dot"></span> Available for freelance &amp; collaboration
+          </span>
           <h2>
-            Hi There 👋<br />
-            I'm
-            <span>Alif</span>
-            Arya Ramadhan
+            Hi there <span>👋</span><br />
+            I'm <span id="heroName">Alif Arya</span>
           </h2>
-          <p>I Am <span class="typing-text"></span></p>
-          <a href="#contact" class="btn mt-5 mb-0">
-            <span>Get in touch</span>
-            <i class="fas fa-arrow-circle-down"></i>
-          </a>
-          <div class="socials mt-4 position-relative">
-            <ul class="social-icons my-0 px-0">
-              <li class="d-inline-block">
-                <a
-                  class="linkedin d-inline-block"
-                  aria-label="LinkedIn"
-                  href="https://www.linkedin.com/in/alif-arya-ramadhan-743528249/"
-                  target="_blank"
-                >
-                  <i class="fab fa-linkedin"></i>
-                </a>
-              </li>
-              <li class="d-inline-block">
-                <a
-                  class="github d-inline-block"
-                  aria-label="GitHub"
-                  href="https://github.com/Alifarya31"
-                  target="_blank"
-                >
-                  <i class="fab fa-github"></i>
-                </a>
-              </li>
-              <li class="d-inline-block">
-                <a
-                  class="instagram d-inline-block"
-                  aria-label="Instagram"
-                  href="https://www.instagram.com/alifaryaramdhan"
-                  target="_blank"
-                >
-                  <i class="fab fa-instagram"></i>
-                </a>
-              </li>
-            </ul>
+          <p class="role">
+            <span style="color: var(--text-muted)">I'm a</span>
+            <span class="typing-text"></span>
+          </p>
+          <p class="lead-mini">
+            I craft clean, accessible and delightful web experiences — blending
+            front-end engineering with thoughtful UI/UX design.
+          </p>
+          <div class="cta-row">
+            <a href="#contact" class="btn-gradient">
+              <span>Get in touch</span>
+              <i class="fas fa-arrow-circle-down"></i>
+            </a>
+            <a href="#project" class="btn-ghost">
+              <span>View my work</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
+          <ul class="social-icons">
+            <li>
+              <a
+                class="linkedin"
+                aria-label="LinkedIn"
+                href="https://www.linkedin.com/in/alif-arya-ramadhan-743528249/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                class="github"
+                aria-label="GitHub"
+                href="https://github.com/Alifarya31"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                class="instagram"
+                aria-label="Instagram"
+                href="https://www.instagram.com/alifaryaramdhan"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
         </div>
+
         <div class="image">
-          <img draggable="false" src="assets/img/profile.png" alt="" />
+          <img draggable="false" src="assets/img/profile.png" alt="Alif Arya Ramadhan" />
+          <span class="float-badge b1"><i class="fab fa-react"></i> React</span>
+          <span class="float-badge b2"><i class="fab fa-figma"></i> UI/UX</span>
+          <span class="float-badge b3"><i class="fas fa-code"></i> Front-End</span>
         </div>
       </div>
+
+      <div class="stats-strip">
+        <div class="stat">
+          <div class="num" data-count="5">0</div>
+          <div class="label">Projects Built</div>
+        </div>
+        <div class="stat">
+          <div class="num" data-count="5">0</div>
+          <div class="label">Certifications</div>
+        </div>
+        <div class="stat">
+          <div class="num" data-count="10">0</div>
+          <div class="label">Tech Skills</div>
+        </div>
+        <div class="stat">
+          <div class="num">∞</div>
+          <div class="label">Curiosity</div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-hint" aria-label="Scroll down">
+        <span>Scroll</span>
+        <i class="fas fa-chevron-down"></i>
+      </a>
     </section>
 
-    <section class="about" id="about">
-      <div class="container d-flex flex-column">
-        <div class="title" data-aos="fade-down" data-aos-duration="1000">
-          <h2 class="text-center">
-            <i class="fas fa-user-alt"></i>
-            About
-            <span>Me</span>
-          </h2>
-        </div>
-        <div class="content d-flex align-items-center justify-content-center">
-          <div class="image" data-aos="fade-right" data-aos-duration="1000">
-            <img src="assets/img/profile.png" draggable="false" />
+    <!-- ================= ABOUT ================= -->
+    <section class="about section" id="about">
+      <div class="container">
+        <span class="section-eyebrow">Get to know me</span>
+        <h2 class="section-title" data-aos="fade-down">
+          About <span>Me</span>
+        </h2>
+        <div class="section-divider"></div>
+
+        <div class="about-grid">
+          <div class="about-image" data-aos="fade-right" data-aos-duration="900">
+            <div class="frame"></div>
+            <img src="assets/img/profile.png" alt="Alif Arya Ramadhan" draggable="false" />
           </div>
-          <div class="intro" data-aos="fade-left" data-aos-duration="1000">
-            <h3>I'm Alip</h3>
+          <div class="intro" data-aos="fade-left" data-aos-duration="900">
+            <h3>I'm Alif 👋</h3>
             <span class="tagline">Front-End Web Developer</span>
             <p>
-              Now, I'm 19 years old. I'm based in Bekasi, West Java, Indonesia.
-              I'm graduated from senior high school majoring in Software
-              Engineering. I'm very passionate about improving my coding skills,
-              UI/UX Design & developing websites. I'm working for myself and
-              freelancing to improve my skills. I like creating interactive
-              websites.
+              I'm <span id="age">19</span> years old, based in Bekasi, West Java,
+              Indonesia. I graduated from senior high school majoring in Software
+              Engineering, and I'm now studying at BINUS University. I'm deeply
+              passionate about leveling up my coding skills, UI/UX design and
+              building interactive, user-friendly websites. I work on personal
+              projects and freelance to sharpen my craft.
             </p>
             <div class="hire-me">
               <p>
-                <span>
-                  <i class="fa fa-envelope"></i>
-                  Email :
-                </span>
-                alifaryaramadhan@binus.ac.id
+                <i class="fa fa-envelope"></i>
+                <span><strong>Email</strong>alifaryaramadhan@binus.ac.id</span>
               </p>
               <p>
-                <span>
-                  <i class="fa fa-map-marked"></i>
-                  Place :
-                </span>
-                Bekasi, West Java, Indonesia
+                <i class="fa fa-map-marked-alt"></i>
+                <span><strong>Location</strong>Bekasi, West Java, Indonesia</span>
+              </p>
+              <p>
+                <i class="fa fa-graduation-cap"></i>
+                <span><strong>Education</strong>BINUS University</span>
+              </p>
+              <p>
+                <i class="fa fa-briefcase"></i>
+                <span><strong>Status</strong>Open to opportunities</span>
               </p>
             </div>
-            <div class="cv-btn d-flex flex-column">
-              <a href="#skills" class="btn btn-outline-primary">
-                <span>Skills & Abilitties</span>
+            <div class="cv-btn">
+              <a href="#skills" class="btn-gradient">
+                <span>Skills &amp; Abilities</span>
                 <i class="fas fa-arrow-circle-down"></i>
               </a>
-              <a href="#" class="btn btn-outline-primary">
-                <span>Download CV</span>
+              <a href="mailto:alifaryaramadhan@binus.ac.id?subject=Requesting%20CV" class="btn-ghost">
+                <span>Request CV</span>
                 <i class="fas fa-download"></i>
               </a>
             </div>
           </div>
         </div>
       </div>
-      <div class="skills d-flex flex-column" id="skills">
-        <div class="container d-flex flex-column">
-          <div class="title" data-aos="fade-down" data-aos-duration="1000">
-            <h2>
-              <i class="fas fa-laptop-code"></i>
-              Skills & Abilitties
-            </h2>
-          </div>
-          <div
-            class="box d-flex flex-column align-items-center justify-content-center"
-            data-aos="fade-left"
-            data-aos-duration="1000"
-          >
-            <h3>Front-End Web <span>Developer</span></h3>
-            <div class="image">
-              <img
-                draggable="false"
-                src="assets/img/skills/icons8-html-5.svg"
-                alt="HTML5"
-              />
-              <img
-                draggable="false"
-                src="assets/img/skills/icons8-css3.svg"
-                alt="CSS3"
-              />
-              <img
-                draggable="false"
-                src="assets/img/skills/icons8-javascript.svg"
-                alt="JS"
-              />
-              <img
-                draggable="false"
-                src="assets/img/skills/icons8-node-js.svg"
-                alt="Node-JS"
-              />
-              <img
-                draggable="false"
-                src="assets/img/skills/icons8-bootstrap.svg"
-                alt="Bootstrap"
-              />
-              <!-- <img
-                draggable="false"
-                src="assets/img/skills/icons8-sublime-text.svg"
-                alt="Sublime-text"
-              /> -->
-              <img
-                draggable="false"
-                src="assets/img/skills/icons8-react.svg"
-                alt="VSCode"
-              />
-              <img
-                draggable="false"
-                src="assets/img/skills/icons8-visual-studio.svg"
-                alt="VSCode"
-              />
-              <img
-                draggable="false"
-                src="assets/img/skills/icons8-github.svg"
-                alt="Github"
-              />
-              <img
-                draggable="false"
-                src="assets/img/skills/vercel.svg"
-                alt=""
-              />
-              <img
-                draggable="false"
-                src="assets/img/skills/icons8-jquery.svg"
-                alt=""
-              />
-            </div>
-          </div>
-          <div class="box" data-aos="fade-right" data-aos-duration="1000">
-            <h3>UI/UX <span>Designer</span></h3>
-            <div class="image">
-              <img
-                draggable="false"
-                src="assets/img/skills/icons8-figma.svg"
-                alt="Figma"
-              />
-              <!-- <img
-                draggable="false"
-                src="assets/img/skills/icons8-sketch.svg"
-                alt="Sketch"
-              /> -->
-            </div>
-          </div>
-          <div class="box" data-aos="fade-left" data-aos-duration="1000">
-            <h3>Content <span>Creator</span></h3>
-            <div class="image">
-              <!-- <img
-                draggable="false"
-                src="assets/img/skills/icons8-adobe-premiere-pro.svg"
-                alt="Premiere Pro"
-              /> -->
-              <!-- <img
-                draggable="false"
-                src="assets/img/skills/icons8-adobe-photoshop.svg"
-                alt="Photoshop"
-              />
-              <img
-                draggable="false"
-                src="assets/img/skills/icons8-youtube.svg"
-                alt="Youtube"
-              /> -->
-              <img
-                draggable="false"
-                src="assets/img/skills/icons8-tiktok.svg"
-                alt="Tiktok"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section
-      class="certification d-flex flex-column align-items-center justify-content-center"
-      id="certification"
-    >
-      <div class="title" data-aos="fade-down" data-aos-duration="1000">
-        <h2 class="text-center">
-          <i class="fa fa-certificate"></i>
-          Certification
-        </h2>
-      </div>
-      <div class="content d-flex flex-wrap justify-content-center">
-        <!-- <div class="box" data-aos="zoom-in" data-aos-duration="2000"> <img
-                draggable="false" src="assets/img/certification/uiux skillsacademy.jpg" alt=""/>
-                <div class="description"> <h3> Designing the visual appearance of the website
-                (UI Design) with Figma for website designers </h3> <p>By <span>Skill Academy x
-                Prakerja</span> </p> <div class="credentials"> <a target="_blank"
-                href="https://skillacademy.com/sertifikat/9Y4A6M5YDSZ72E"> view credentials <i
-                class="fas fa-angle-right"></i> </a> </div> </div> </div> -->
-      </div>
-      <div class="loadmore-btn my-5" data-aos="fade-down">
-        <a href="#certifications" class="btn btn-outline-primary">Load More </a>
-      </div>
-    </section>
 
-    <section class="project" id="project">
-      <div
-        class="container d-flex flex-wrap justify-content-center align-items-center"
-      >
-        <div class="title" data-aos="fade-down" data-aos-duration="1000">
-          <h2 class="text-center">
-            <i class="fa fa-laptop-code"></i>
-            Projects
+      <!-- ================= SKILLS ================= -->
+      <div class="skills-wrap" id="skills">
+        <div class="container">
+          <span class="section-eyebrow">What I work with</span>
+          <h2 class="section-title" data-aos="fade-down">
+            Skills &amp; <span>Abilities</span>
           </h2>
-        </div>
-        <div
-          class="content d-flex flex-row flex-wrap align-items-center justify-content-center"
-          data-aos="fade-down"
-        >
-          <!-- <div class="cards"> <img draggable="false"
-                    src="/assets/img/project/form.png" alt=""/> <div class="container"> <div
-                    class="tag"> <h3>Form Website</h3> <h5>HTML & CSS</h5> </div> <div class="desc">
-                    <p> This is my first project. I Learn in freecodecamp to make form website using
-                    HTML & CSS </p> <div class="btns d-flex justify-content-sm-around"> <a
-                    href="https://Alifarya31.github.io/Survey-Form/" class="btn" target="_blank">
-                    <i class="fas fa-eye"></i> Demo</a > <a
-                    href="https://github.com/Alifarya31/Survey-Form" class="btn" target="_blank">
-                    <i class="fas fa-code"></i>Code</a > </div> </div> </div> </div> -->
-        </div>
-        <div class="viewall-btn d-flex my-5">
-          <a href="#project" class="btn btn-outline-light" data-aos="fade-down">
-            <span>View All</span>
-            <i class="fas fa-angle-right"></i>
-          </a>
+          <div class="section-divider"></div>
+
+          <div class="skills-grid">
+            <div class="skill-card glass" data-aos="fade-up" data-aos-duration="800">
+              <h3>Front-End <span>Developer</span></h3>
+              <div class="image">
+                <img draggable="false" src="assets/img/skills/icons8-html-5.svg" alt="HTML5" title="HTML5" />
+                <img draggable="false" src="assets/img/skills/icons8-css3.svg" alt="CSS3" title="CSS3" />
+                <img draggable="false" src="assets/img/skills/icons8-javascript.svg" alt="JavaScript" title="JavaScript" />
+                <img draggable="false" src="assets/img/skills/icons8-node-js.svg" alt="Node.js" title="Node.js" />
+                <img draggable="false" src="assets/img/skills/icons8-bootstrap.svg" alt="Bootstrap" title="Bootstrap" />
+                <img draggable="false" src="assets/img/skills/icons8-react.svg" alt="React" title="React" />
+                <img draggable="false" src="assets/img/skills/icons8-visual-studio.svg" alt="VS Code" title="VS Code" />
+                <img draggable="false" src="assets/img/skills/icons8-github.svg" alt="GitHub" title="GitHub" />
+                <img draggable="false" src="assets/img/skills/vercel.svg" alt="Vercel" title="Vercel" />
+                <img draggable="false" src="assets/img/skills/icons8-jquery.svg" alt="jQuery" title="jQuery" />
+              </div>
+            </div>
+
+            <div class="skill-card glass" data-aos="fade-up" data-aos-duration="800" data-aos-delay="120">
+              <h3>UI/UX <span>Designer</span></h3>
+              <div class="image">
+                <img draggable="false" src="assets/img/skills/icons8-figma.svg" alt="Figma" title="Figma" />
+                <img draggable="false" src="assets/img/skills/icons8-adobe-photoshop.svg" alt="Photoshop" title="Photoshop" />
+                <img draggable="false" src="assets/img/skills/icons8-adobe-premiere-pro.svg" alt="Premiere Pro" title="Premiere Pro" />
+              </div>
+            </div>
+
+            <div class="skill-card glass" data-aos="fade-up" data-aos-duration="800" data-aos-delay="240">
+              <h3>Content <span>Creator</span></h3>
+              <div class="image">
+                <img draggable="false" src="assets/img/skills/icons8-tiktok.svg" alt="TikTok" title="TikTok" />
+                <img draggable="false" src="assets/img/skills/icons8-youtube.svg" alt="YouTube" title="YouTube" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section
-      id="contact"
-      class="contact d-flex flex-column align-items-center justify-content-center text-center"
-    >
-      <h2 class="title" data-aos="fade-down" data-aos-duration="1000">
+    <!-- ================= CERTIFICATION ================= -->
+    <section class="certification section" id="certification">
+      <span class="section-eyebrow">Achievements</span>
+      <h2 class="section-title" data-aos="fade-down">
+        <i class="fa fa-certificate"></i> Certification<span>s</span>
+      </h2>
+      <div class="section-divider"></div>
+      <div class="container">
+        <div class="content cert-grid">
+          <!-- Filled dynamically by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section class="project section" id="project">
+      <span class="section-eyebrow">Selected work</span>
+      <h2 class="section-title" data-aos="fade-down">
+        <i class="fa fa-laptop-code"></i> Projects
+      </h2>
+      <div class="section-divider"></div>
+      <div class="container">
+        <div class="content project-grid" data-aos="fade-up">
+          <!-- Filled dynamically by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="contact">
+      <span class="section-eyebrow">Let's talk</span>
+      <h2 class="title" data-aos="fade-down">
         Get In <span>Touch</span>
       </h2>
-      <p data-aos="fade-down" data-aos-duration="1000">
-        Although I’m not currently looking for any new opportunities, my inbox
-        is always open. Whether you have a question or just want to say hi, I’ll
-        try my best to get back to you!
+      <p data-aos="fade-up" data-aos-delay="100">
+        My inbox is always open — whether you have a question, a project in mind,
+        or just want to say hi, I'll do my best to get back to you.
       </p>
-      <a
-        data-aos="fade-down"
-        data-aos-duration="1000"
-        class="email-link btn btn-outline-primary"
-        href="mailto:alifaryaramadhan@binus.ac.id"
-        rel="noopener noreferrer"
-        target="_blank"
-        >Say Hello
-        <i class="fa fa-envelope"></i>
-      </a>
+
+      <div class="contact-card glass" data-aos="zoom-in" data-aos-delay="150">
+        <div class="contact-rows">
+          <a href="mailto:alifaryaramadhan@binus.ac.id">
+            <i class="fas fa-envelope"></i> alifaryaramadhan@binus.ac.id
+          </a>
+          <a href="https://wa.me/6289646489202" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i> +62 896-4648-9202
+          </a>
+          <span class="item">
+            <i class="fas fa-map-marker-alt"></i> Bekasi, Indonesia
+          </span>
+        </div>
+        <a
+          class="btn-gradient"
+          href="mailto:alifaryaramadhan@binus.ac.id?subject=Hello%20Alif!"
+          rel="noopener noreferrer"
+        >
+          Say Hello <i class="fa fa-paper-plane"></i>
+        </a>
+      </div>
     </section>
 
-    <footer id="footer" class="footer d-flex flex-column">
-      <div class="top d-flex justify-content-sm-around">
-        <div class="content d-flex flex-column">
-          <img src="assets/img/sdcicon.svg" alt="sdcicon" />
+    <!-- ================= FOOTER ================= -->
+    <footer id="footer" class="footer">
+      <div class="top">
+        <div class="content">
+          <img src="assets/img/aaricon.svg" alt="Alif Arya Ramadhan logo" />
           <h3>Alif's Portfolio</h3>
-          <p>Thank you for visiting my personal portfolio website.</p>
-        </div>
-        <div class="content d-flex flex-column">
-          <h3>Useful Links</h3>
-          <a href="#home">
-            <i class="fa fa-arrow-circle-right"></i>
-            Home</a
-          >
-          <a href="#about">
-            <i class="fa fa-arrow-circle-right"></i>
-            About</a
-          >
-          <a href="#certification">
-            <i class="fa fa-arrow-circle-right"></i>
-            Certification</a
-          >
-          <a href="#project">
-            <i class="fa fa-arrow-circle-right"></i>
-            Projects</a
-          >
-          <a href="https://blog.alifaryaramadhan.my.id">
-            <i class="fa fa-arrow-circle-right"></i>
-            Blog</a
-          >
-        </div>
-        <div class="content d-flex flex-column">
-          <h4>Contact</h4>
-          <a
-            href="mailto:alif.ramadhan003@binus.ac.id"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <i class="fas fa-envelope"></i>
-            alifaryaramadhan@binus.ac.id</a
-          >
-          <a
-            href="https://wa.me/089646489202"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <i class="fas fa-envelope"></i>
-            089646489202</a
-          >
-          <a>
-            <i class="fas fa-map-marked-alt"></i>
-            Bekasi, West Java, Indonesia
-          </a>
+          <p>
+            Thanks for visiting my personal portfolio. Let's build something
+            great together.
+          </p>
           <div class="socials">
             <a
               href="https://www.linkedin.com/in/alif-arya-ramadhan-743528249/"
-              class="fab fa-linkedin"
+              class="linkedin fab fa-linkedin-in"
               aria-label="LinkedIn"
               target="_blank"
+              rel="noopener noreferrer"
             ></a>
             <a
-              href="https://github.com/alifarya31"
-              class="fab fa-github"
+              href="https://github.com/Alifarya31"
+              class="github fab fa-github"
               aria-label="GitHub"
               target="_blank"
+              rel="noopener noreferrer"
             ></a>
             <a
-              href="https://instagram.com/Alifaryaramdhan"
-              class="fab fa-instagram"
+              href="https://www.instagram.com/alifaryaramdhan"
+              class="instagram fab fa-instagram"
               aria-label="Instagram"
               target="_blank"
+              rel="noopener noreferrer"
             ></a>
           </div>
         </div>
+        <div class="content">
+          <h4>Useful Links</h4>
+          <a href="#home"><i class="fa fa-arrow-circle-right"></i> Home</a>
+          <a href="#about"><i class="fa fa-arrow-circle-right"></i> About</a>
+          <a href="#skills"><i class="fa fa-arrow-circle-right"></i> Skills</a>
+          <a href="#certification"><i class="fa fa-arrow-circle-right"></i> Certification</a>
+          <a href="#project"><i class="fa fa-arrow-circle-right"></i> Projects</a>
+          <a href="https://blog.alifaryaramadhan.my.id" target="_blank" rel="noopener noreferrer">
+            <i class="fa fa-arrow-circle-right"></i> Blog
+          </a>
+        </div>
+        <div class="content">
+          <h4>Contact</h4>
+          <a href="mailto:alifaryaramadhan@binus.ac.id">
+            <i class="fas fa-envelope"></i> alifaryaramadhan@binus.ac.id
+          </a>
+          <a href="https://wa.me/6289646489202" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i> +62 896-4648-9202
+          </a>
+          <a href="https://maps.google.com/?q=Bekasi" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-map-marked-alt"></i> Bekasi, West Java, Indonesia
+          </a>
+        </div>
       </div>
       <div class="bottom">
-        <div class="text-center p-4">
-          © 2023 Copyright:
-          <a class="text-reset fw-bold" href="https://alifaryaramadhan.my.id/"
-            >alifaryaramadhan.my.id</a
-          >
-        </div>
+        <span id="copyright"></span>
       </div>
     </footer>
 
-    <!-- cdn script js-->
+    <!-- cdn script js -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js"
       integrity="sha512-1KbKusm/hAtkX5FScVR5G36wodIMnVd/aP04af06iyQTkD17szAMGNmxfNH+tEuFp3Og/P5G32L1qEC47CZbUQ=="
@@ -523,10 +483,9 @@
       integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
       crossorigin="anonymous"
     ></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-    <!-- main script js -->
+    <!-- main script js (particles.js lib + config + app logic) -->
     <script src="src/particle.js"></script>
     <script src="src/app.js"></script>
     <script src="src/script.js"></script>

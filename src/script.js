@@ -1,180 +1,298 @@
-// typing text hero
-const typed = new Typed(".typing-text", {
-  strings: ["Front-End Web Developer", "UI/UX Designer", "Content Creator"],
-  loop: true,
-  typeSpeed: 55,
-  backSpeed: 25,
-  backDelay: 500,
-});
+/* ============================================================
+   Alif Arya Ramadhan — Portfolio logic
+   ============================================================ */
+(function () {
+  "use strict";
 
-// auto hide navbar click
-$(".click-trigger").click(function () {
-  $(".navbar-collapse").collapse("hide");
-});
+  /* ---------- THEME TOGGLE (dark / light) ---------- */
+  const THEME_KEY = "alif-theme";
+  const root = document.documentElement;
+  const themeToggle = document.getElementById("themeToggle");
 
-// automatic transparent navbar
-const navBar = document.getElementsByTagName("nav")[0];
-window.addEventListener("scroll", function () {
-  console.log(window.scrollY);
-  if (window.scrollY > 1) {
-    navBar.classList.replace("bg-transparent", "navbar-color");
-  } else if (this.window.scrollY <= 0) {
-    navBar.classList.replace("navbar-color", "bg-transparent");
+  // Apply stored theme as early as possible
+  (function initTheme() {
+    const stored = localStorage.getItem(THEME_KEY);
+    const prefersLight =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: light)").matches;
+    const theme = stored || (prefersLight ? "light" : "dark");
+    root.setAttribute("data-theme", theme);
+  })();
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+      const current = root.getAttribute("data-theme") === "light" ? "light" : "dark";
+      const next = current === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem(THEME_KEY, next);
+    });
   }
-});
 
-// fetchData API
-async function fetchData(type = "certification") {
-  let response;
-  type === "certification"
-    ? (response = await fetch("certification/certification.json"))
-    : (response = await fetch("project/project.json"));
-  const data = await response.json();
-  return data;
-}
+  /* ---------- TYPING EFFECT (hero role) ---------- */
+  const typedEl = document.querySelector(".typing-text");
+  if (typedEl && window.Typed) {
+    new Typed(".typing-text", {
+      strings: [
+        "Front-End Web Developer",
+        "UI/UX Designer",
+        "Content Creator",
+        "Freelancer",
+      ],
+      loop: true,
+      typeSpeed: 60,
+      backSpeed: 30,
+      backDelay: 1400,
+      smartBackspace: true,
+    });
+  }
 
-function showCertification(certification) {
-  let certificationContainer = document.querySelector(
-    ".certification .content"
-  );
-  let certificationHTML = "";
-  certification.forEach((certification) => {
-    certificationHTML += `
-        <div class="box" data-aos="fade-down">
-            <img
-                draggable="false"
-                src="${certification.image}"
-                alt="certification"/>
-            <div class="desc">
-                <h3>
-                    ${certification.name}
-                </h3>
-                <p>By
-                    <span>${certification.by}</span>
-                </p>
-                <div class="credentials">
-                    <a class="btn" target="_blank" href="${certification.links.credentials}">
-                        view credentials
-                        <i class="fas fa-angle-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>`;
-  });
-  certificationContainer.innerHTML = certificationHTML;
-}
-function showProject(project) {
-  let projectContainer = document.querySelector(".project .content");
-  let projectHTML = "";
-  project.slice(0, 90).forEach((project) => {
-    projectHTML += `
-        <div class="cards" >
-    <img draggable="false" src="${project.image}" alt=""/>
-    <div class="desc-content d-flex flex-column text-justify">
-        <div class="tag">
-            <h3>${project.title}</h3>
-            <h5>${project.tech}</h5>
-        </div>
-        <div class="desc">
-            <p>
-            ${project.desc}
-            </p>
-            <div class="btns">
-                <a
-                    href="${project.links.demo}"
-                    class="btn"
-                    target="_blank">
-                    <i class="fas fa-eye"></i>
-                    Demo
-                </a>
-                <a
-                    href="${project.links.code}"
-                    class="btn"
-                    target="_blank">
-                    <i class="fas fa-code"></i>
-                    Code
-                </a>
-            </div>
-        </div>
-    </div>
-</div>`;
-  });
-  projectContainer.innerHTML = projectHTML;
-}
-fetchData("certification").then((data) => {
-  showCertification(data);
-});
-fetchData("project").then((data) => {
-  showProject(data);
-});
+  /* ---------- DYNAMIC AGE ---------- */
+  // Base: 19 years old in 2024 → birth year 2005 (kept dynamic going forward)
+  const BIRTH_YEAR = 2005;
+  const ageEl = document.getElementById("age");
+  if (ageEl) {
+    ageEl.textContent = new Date().getFullYear() - BIRTH_YEAR;
+  }
 
-// loadmore button
-const loadmore = document.querySelector(".loadmore-btn");
+  /* ---------- DYNAMIC COPYRIGHT YEAR ---------- */
+  const copyEl = document.getElementById("copyright");
+  if (copyEl) {
+    const year = new Date().getFullYear();
+    copyEl.innerHTML =
+      "© " +
+      year +
+      ' <a class="text-reset fw-bold" href="https://alifaryaramadhan.my.id/" target="_blank" rel="noopener noreferrer">Alif Arya Ramadhan</a> — Crafted with <span class="heart"><i class="fas fa-heart"></i></span> &amp; code.';
+  }
 
-let currentItems = 3;
-loadmore.addEventListener("click", () => {
-  const elementList = [
-    ...document.querySelectorAll(".certification .content .box"),
-  ];
+  /* ---------- NAVBAR: scrolled state + scroll progress + active link ---------- */
+  const navBar = document.querySelector("nav.navbar");
+  const progress = document.getElementById("scrollProgress");
 
-  for (let i = currentItems; i < currentItems + 3; i++) {
-    if (elementList[i]) {
-      elementList[i].classList.add("d-block");
+  function onScroll() {
+    const y = window.scrollY || document.documentElement.scrollTop;
+
+    if (navBar) {
+      navBar.classList.toggle("scrolled", y > 40);
+    }
+
+    if (progress) {
+      const docH =
+        document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (docH > 0 ? (y / docH) * 100 : 0) + "%";
     }
   }
-  currentItems += 3;
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-  if (currentItems >= elementList.length) {
-    loadmore.classList.add("d-none");
+  // Active nav link via IntersectionObserver
+  const navLinks = Array.from(document.querySelectorAll(".navbar-nav .nav-link"));
+  const sections = navLinks
+    .map((link) => {
+      const id = link.getAttribute("href");
+      return id && id.startsWith("#") ? document.querySelector(id) : null;
+    })
+    .filter(Boolean);
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            const id = "#" + entry.target.id;
+            navLinks.forEach(function (link) {
+              const href = link.getAttribute("href");
+              link.classList.toggle("active", href === id);
+            });
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    sections.forEach(function (s) {
+      spy.observe(s);
+    });
   }
-});
 
-// animate on scroll (AOS)
-AOS.init();
-
-// disable inspect element or dev mode
-document.addEventListener("contextmenu", function(e){
-  e.preventDefault();
-});
-
-document.onkeydown = function (e){
-  if (event) {
-      return false;
+  /* ---------- ANIMATED COUNTERS (stats strip) ---------- */
+  const counters = document.querySelectorAll(".stats-strip .num[data-count]");
+  if ("IntersectionObserver" in window && counters.length) {
+    const run = function (el) {
+      const target = parseInt(el.getAttribute("data-count"), 10) || 0;
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(eased * target) + (target >= 5 ? "+" : "");
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    };
+    const obs = new IntersectionObserver(
+      function (entries, o) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            run(e.target);
+            o.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+    counters.forEach(function (c) {
+      obs.observe(c);
+    });
   }
-  if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)){
-      return false;
+
+  /* ---------- AUTO-CLOSE MOBILE NAV ON LINK CLICK ---------- */
+  document.querySelectorAll(".navbar-nav .nav-link, .nav-cta").forEach(function (link) {
+    link.addEventListener("click", function () {
+      const collapse = document.getElementById("navbarNav");
+      if (collapse && collapse.classList.contains("show")) {
+        // Bootstrap collapse instance
+        if (window.bootstrap && bootstrap.Collapse) {
+          bootstrap.Collapse.getOrCreateInstance(collapse).hide();
+        }
+      }
+    });
+  });
+
+  /* ---------- ANIMATE ON SCROLL ---------- */
+  if (window.AOS) {
+    AOS.init({
+      duration: 800,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 80,
+    });
   }
-  if (e.ctrlKey && e.shiftKey && e.keyCode == "C".charCodeAt(0)){
-      return false;
+
+  /* ---------- FETCH + RENDER DATA (certifications & projects) ---------- */
+  async function fetchData(type) {
+    const url =
+      type === "certification"
+        ? "certification/certification.json"
+        : "project/project.json";
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Failed to load " + url);
+    return res.json();
   }
-  if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)){
-      return false;
+
+  function renderCertifications(list) {
+    const container = document.querySelector(".certification .content");
+    if (!container) return;
+    if (!list.length) {
+      container.innerHTML =
+        '<p style="color:var(--text-muted)">Certifications coming soon.</p>';
+      return;
+    }
+    container.innerHTML = list
+      .map(function (c) {
+        return (
+          '<div class="box" data-aos="zoom-in" data-aos-duration="700">' +
+          '<div class="img-wrap"><img draggable="false" src="' +
+          c.image +
+          '" alt="' +
+          escapeHtml(c.name) +
+          '"/></div>' +
+          '<div class="desc">' +
+          "<h3>" +
+          escapeHtml(c.name) +
+          "</h3>" +
+          "<p>By <span>" +
+          escapeHtml(c.by) +
+          "</span></p>" +
+          '<div class="credentials">' +
+          '<a class="btn" target="_blank" rel="noopener noreferrer" href="' +
+          (c.links && c.links.credentials ? c.links.credentials : "#") +
+          '">View credential <i class="fas fa-angle-right"></i></a>' +
+          "</div>" +
+          "</div>" +
+          "</div>"
+        );
+      })
+      .join("");
+    if (window.AOS) AOS.refreshHard();
   }
-  if (e.ctrlKey && e.keyCode == "I".charCodeAt(0)){
-      return false;
+
+  function renderProjects(list) {
+    const container = document.querySelector(".project .content");
+    if (!container) return;
+    if (!list.length) {
+      container.innerHTML =
+        '<p style="color:var(--text-muted)">Projects coming soon.</p>';
+      return;
+    }
+    container.innerHTML = list
+      .map(function (p) {
+        const demo = p.links && p.links.demo ? p.links.demo : "#";
+        const code = p.links && p.links.code ? p.links.code : "#";
+        return (
+          '<div class="cards" data-aos="fade-up">' +
+          '<img draggable="false" src="' +
+          p.image +
+          '" alt="' +
+          escapeHtml(p.title) +
+          '"/>' +
+          '<div class="desc-content">' +
+          '<div class="tag"><h3>' +
+          escapeHtml(p.title) +
+          "</h3><h5>" +
+          escapeHtml(p.tech) +
+          "</h5></div>" +
+          '<div class="desc"><p>' +
+          escapeHtml(p.desc) +
+          '</p><div class="btns">' +
+          '<a href="' +
+          demo +
+          '" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-eye"></i> Demo</a>' +
+          '<a href="' +
+          code +
+          '" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-code"></i> Code</a>' +
+          "</div></div>" +
+          "</div></div>"
+        );
+      })
+      .join("");
+    if (window.AOS) AOS.refreshHard();
   }
-}
 
-// Scrollspy botstrap
-const scrollSpy = new bootstrap.ScrollSpy(document.body, {
-  target: ".navbar",
-});
+  function escapeHtml(str) {
+    return String(str || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
 
-// scroll reveal animation content
-const srtop = ScrollReveal({
-  origin: "top",
-  distance: "90px",
-  duration: 1000,
-  reset: true,
-});
+  // Load data with graceful error handling
+  fetchData("certification")
+    .then(renderCertifications)
+    .catch(function (err) {
+      console.warn("Certifications failed to load:", err.message);
+    });
 
-srtop.reveal(".home .content .intro h3", { delay: 300 });
-srtop.reveal(".home .content .intro p", { delay: 300 });
-srtop.reveal(".home .content .intro a", { delay: 400 });
+  fetchData("project")
+    .then(renderProjects)
+    .catch(function (err) {
+      console.warn("Projects failed to load:", err.message);
+    });
 
-srtop.reveal(".home .image", { delay: 600 });
-srtop.reveal(".home .linkedin", { interval: 600 });
-srtop.reveal(".home .github", { interval: 600 });
-srtop.reveal(".home .instagram", { interval: 600 });
-
-srtop.reveal(".about .cv-btn", { delay: 200 });
+  /* ---------- LOAD MORE (optional, only if button exists) ---------- */
+  const loadmore = document.querySelector(".loadmore-btn");
+  if (loadmore) {
+    let currentItems = 3;
+    loadmore.addEventListener("click", function () {
+      const items = Array.prototype.slice.call(
+        document.querySelectorAll(".certification .content .box")
+      );
+      for (let i = currentItems; i < currentItems + 3; i++) {
+        if (items[i]) items[i].classList.add("d-block");
+      }
+      currentItems += 3;
+      if (currentItems >= items.length) {
+        loadmore.classList.add("hide");
+      }
+    });
+  }
+})();

@@ -1,47 +1,47 @@
 [
   {
-    "name": "Learn basic web programming",
-    "by": "Dicoding Academy x IndosatID Camp",
-    "image": "./certification/be-dicoding.png",
+    "name": "Learn Basic Web Programming",
+    "by": "Dicoding Academy x Indosat ID Camp",
+    "image": "./certification/web-dicoding.png",
     "category": "programming",
     "links": {
       "credentials": "https://www.dicoding.com/certificates/QLZ97W21MP5D"
     }
   },
   {
-    "name": "Junior Web Programming",
-    "by": "Lembaga Sertifikasi Profesi Telematika x BNSP",
-    "image": "./certification/Junior-Web3.png",
+    "name": "Learn Basic JavaScript Programming",
+    "by": "Dicoding Academy x Indosat ID Camp",
+    "image": "./certification/js-dicoding.png",
     "category": "programming",
     "links": {
-      "credentials": "https://drive.google.com/file/d/1w1AfRStUOS2-fUFAj_3YbeS3ZXmMjd8r/view?usp=sharing"
-    }
-  },
-  {
-    "name": "Learn basic javascript programming",
-    "by": "Dicoding Academy x IndosatID Camp",
-    "image": "./certification/uiux-skillsacademy.png",
-    "category": "programming",
-    "links": {
-      "credentials": "https://alifaryaramadhan.com"
+      "credentials": "https://alifaryaramadhan.my.id"
     }
   },
   {
     "name": "Learn to Create a Web Front-End for Beginners",
     "by": "Dicoding Academy x Lintasarta Cloudeka Digischool",
-    "image": "./certification/uiux-skillsacademy.png",
+    "image": "./certification/fe-dicoding.png",
     "category": "programming",
     "links": {
-      "credentials": "https://alifaryaramadhan.com"
+      "credentials": "https://alifaryaramadhan.my.id"
     }
   },
   {
-    "name": " Learn to Create Backend Applications for Beginners with Cloudeka",
+    "name": "Learn to Create Backend Applications for Beginners",
     "by": "Dicoding Academy x Lintasarta Cloudeka Digischool",
-    "image": "./certification/uiux-skillsacademy.png",
+    "image": "./certification/be-dicoding.png",
     "category": "programming",
     "links": {
-      "credentials": "https://alifaryaramadhan.com"
+      "credentials": "https://alifaryaramadhan.my.id"
+    }
+  },
+  {
+    "name": "Junior Web Developer",
+    "by": "Lembaga Sertifikasi Profesi Telematika x BNSP",
+    "image": "./certification/Junior-Web3.png",
+    "category": "programming",
+    "links": {
+      "credentials": "https://drive.google.com/file/d/1w1AfRStUOS2-fUFAj_3YbeS3ZXmMjd8r/view?usp=sharing"
     }
   }
 ]
