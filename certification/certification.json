@@ -1,41 +1,5 @@
 [
   {
-    "name": "Learn Basic Web Programming",
-    "by": "Dicoding Academy x Indosat ID Camp",
-    "image": "./certification/web-dicoding.png",
-    "category": "programming",
-    "links": {
-      "credentials": "https://www.dicoding.com/certificates/QLZ97W21MP5D"
-    }
-  },
-  {
-    "name": "Learn Basic JavaScript Programming",
-    "by": "Dicoding Academy x Indosat ID Camp",
-    "image": "./certification/js-dicoding.png",
-    "category": "programming",
-    "links": {
-      "credentials": "https://alifaryaramadhan.my.id"
-    }
-  },
-  {
-    "name": "Learn to Create a Web Front-End for Beginners",
-    "by": "Dicoding Academy x Lintasarta Cloudeka Digischool",
-    "image": "./certification/fe-dicoding.png",
-    "category": "programming",
-    "links": {
-      "credentials": "https://alifaryaramadhan.my.id"
-    }
-  },
-  {
-    "name": "Learn to Create Backend Applications for Beginners",
-    "by": "Dicoding Academy x Lintasarta Cloudeka Digischool",
-    "image": "./certification/be-dicoding.png",
-    "category": "programming",
-    "links": {
-      "credentials": "https://alifaryaramadhan.my.id"
-    }
-  },
-  {
     "name": "Junior Web Developer",
     "by": "Lembaga Sertifikasi Profesi Telematika x BNSP",
     "image": "./certification/Junior-Web3.png",

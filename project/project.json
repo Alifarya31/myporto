@@ -15,7 +15,7 @@
     "image": "./assets/img/project/Vkelloggs.png",
     "desc": "This is my project for my BINUS final semester exam assignment",
     "links": {
-      "demo": "https://alifaryaramadhan.com/Vkelloggs/",
+      "demo": "https://vkelloggs.vercel.app",
       "code": "https://github.com/Alifarya31/vkelloggs"
     }
   },
@@ -25,7 +25,7 @@
     "image": "./assets/img/project/CareerSync.png",
     "desc": "This is my project for binus assignment project",
     "links": {
-      "demo": "https://alifaryaramadhan.com/CareerSync",
+      "demo": "https://career-sync-nu.vercel.app",
       "code": "https://github.com/Alifarya31/CareerSync"
     }
   },
