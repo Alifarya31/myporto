@@ -21,7 +21,8 @@
 
   if (themeToggle) {
     themeToggle.addEventListener("click", function () {
-      const current = root.getAttribute("data-theme") === "light" ? "light" : "dark";
+      const current =
+        root.getAttribute("data-theme") === "light" ? "light" : "dark";
       const next = current === "light" ? "dark" : "light";
       root.setAttribute("data-theme", next);
       localStorage.setItem(THEME_KEY, next);
@@ -61,7 +62,7 @@
     copyEl.innerHTML =
       "© " +
       year +
-      ' <a class="text-reset fw-bold" href="https://alifaryaramadhan.my.id/" target="_blank" rel="noopener noreferrer">Alif Arya Ramadhan</a> — Crafted with <span class="heart"><i class="fas fa-heart"></i></span> &amp; code.';
+      ' <a class="text-reset fw-bold" href="https://alifaryaramadhan.com/" target="_blank" rel="noopener noreferrer">Alif Arya Ramadhan</a> — Crafted with <span class="heart"><i class="fas fa-heart"></i></span> &amp; code.';
   }
 
   /* ---------- NAVBAR: scrolled state + scroll progress + active link ---------- */
@@ -76,8 +77,7 @@
     }
 
     if (progress) {
-      const docH =
-        document.documentElement.scrollHeight - window.innerHeight;
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
       progress.style.width = (docH > 0 ? (y / docH) * 100 : 0) + "%";
     }
   }
@@ -85,7 +85,9 @@
   onScroll();
 
   // Active nav link via IntersectionObserver
-  const navLinks = Array.from(document.querySelectorAll(".navbar-nav .nav-link"));
+  const navLinks = Array.from(
+    document.querySelectorAll(".navbar-nav .nav-link"),
+  );
   const sections = navLinks
     .map((link) => {
       const id = link.getAttribute("href");
@@ -106,7 +108,7 @@
           }
         });
       },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 },
     );
     sections.forEach(function (s) {
       spy.observe(s);
@@ -137,7 +139,7 @@
           }
         });
       },
-      { threshold: 0.6 }
+      { threshold: 0.6 },
     );
     counters.forEach(function (c) {
       obs.observe(c);
@@ -145,17 +147,19 @@
   }
 
   /* ---------- AUTO-CLOSE MOBILE NAV ON LINK CLICK ---------- */
-  document.querySelectorAll(".navbar-nav .nav-link, .nav-cta").forEach(function (link) {
-    link.addEventListener("click", function () {
-      const collapse = document.getElementById("navbarNav");
-      if (collapse && collapse.classList.contains("show")) {
-        // Bootstrap collapse instance
-        if (window.bootstrap && bootstrap.Collapse) {
-          bootstrap.Collapse.getOrCreateInstance(collapse).hide();
+  document
+    .querySelectorAll(".navbar-nav .nav-link, .nav-cta")
+    .forEach(function (link) {
+      link.addEventListener("click", function () {
+        const collapse = document.getElementById("navbarNav");
+        if (collapse && collapse.classList.contains("show")) {
+          // Bootstrap collapse instance
+          if (window.bootstrap && bootstrap.Collapse) {
+            bootstrap.Collapse.getOrCreateInstance(collapse).hide();
+          }
         }
-      }
+      });
     });
-  });
 
   /* ---------- ANIMATE ON SCROLL ---------- */
   if (window.AOS) {
@@ -284,7 +288,7 @@
     let currentItems = 3;
     loadmore.addEventListener("click", function () {
       const items = Array.prototype.slice.call(
-        document.querySelectorAll(".certification .content .box")
+        document.querySelectorAll(".certification .content .box"),
       );
       for (let i = currentItems; i < currentItems + 3; i++) {
         if (items[i]) items[i].classList.add("d-block");

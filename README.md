@@ -60,7 +60,7 @@ Then visit <http://localhost:5500>.
 **Alif Arya Ramadhan** — Front-End Web Developer, UI/UX Designer & Content Creator.
 Based in Bekasi, West Java, Indonesia.
 
-- 🌐 [alifaryaramadhan.my.id](https://alifaryaramadhan.my.id/)
+- 🌐 [alifaryaramadhan.com](https://alifaryaramadhan.com/)
 - 💼 [LinkedIn](https://www.linkedin.com/in/alif-arya-ramadhan-743528249/)
 - 🐙 [GitHub](https://github.com/Alifarya31)
 - 📝 [Blog](https://blog.alifaryaramadhan.my.id)
